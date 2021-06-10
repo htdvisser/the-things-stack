@@ -50,9 +50,10 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        key: ${{ runner.os }}-go-mod-${{ hashFiles('**/go.sum') }}
         restore-keys: |
-          ${{ runner.os }}-go-
+          ${{ runner.os }}-go-mod-${{ hashFiles('**/go.sum') }}
+          ${{ runner.os }}-go-mod-
     - name: Download Go dependencies
       run: go mod download
     - name: Download Go tool dependencies
